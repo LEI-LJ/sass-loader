@@ -1,6 +1,6 @@
 import url from "url";
 import path from "path";
-
+// 获取默认sass
 function getDefaultSassImplementation() {
   let sassImplPkg = "sass";
 
@@ -193,7 +193,6 @@ async function getSassOptions(
     // If we are compiling sass and indentedSyntax isn't set, automatically set it.
     if (typeof sassOptions.syntax === "undefined") {
       const ext = path.extname(resourcePath);
-
       if (ext && ext.toLowerCase() === ".scss") {
         sassOptions.syntax = "scss";
       } else if (ext && ext.toLowerCase() === ".sass") {
@@ -263,7 +262,7 @@ async function getSassOptions(
     } else {
       sassOptions.indentedSyntax = Boolean(sassOptions.indentedSyntax);
     }
-
+    // 接受函数数组 
     // Allow passing custom importers to `sass`/`node-sass`. Accepts `Function` or an array of `Function`s.
     sassOptions.importer = sassOptions.importer
       ? proxyCustomImporters(
